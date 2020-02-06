@@ -1,5 +1,5 @@
 #!/bin/bash
-DATE=$(date '+%d_%m_%y_%H_%M')
+DATE=$(date '+%d_%m_%Y_%H_%M')
 mv /var/log/nginx/access.log /var/log/nginx/access.log.$DATE
 mv /var/log/nginx/error.log /var/log/nginx/error.log.$DATE
 kill -USR1 `cat /var/run/nginx.pid`
