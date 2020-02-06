@@ -12,9 +12,9 @@ LABEL version="v1.0"
 LABEL author="Andre Carvalho"
 LABEL author.email="andre.carvalho@inpe.br"
 
-RUN apt-get update && apt-get -y install cron tzdata && apt-get clean
+RUN apt-get update && apt-get -y install cron && apt-get clean
 
-RUN rm -f /etc/localtime && dpkg-reconfigure -f noninteractive tzdata
+RUN rm -f /etc/localtime && ln -s /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 
 COPY config/nginx.conf /etc/nginx/nginx.conf
 COPY config/403.html /usr/share/nginx/html/403.html
