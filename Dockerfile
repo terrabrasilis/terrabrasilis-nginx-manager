@@ -1,16 +1,14 @@
 # To build image for this dockerfile use this command:
-#   docker build -t terrabrasilis/nginx-manager:v0.3 -f Dockerfile .
+#   docker build -t terrabrasilis/nginx-manager:v1.0 -f Dockerfile .
 #
 # To run without compose and without shell terminal use this command:
-#   docker run -d --rm --name terrabrasilis_nginx -v /tmp/nginx:/var/log/nginx terrabrasilis/nginx-manager:v0.3
+#   docker run -d --rm --name terrabrasilis_nginx -v /tmp/nginx:/var/log/nginx terrabrasilis/nginx-manager:v1.0
 #
 FROM nginx:latest
 
 LABEL "br.inpe.dpi"="INPE/DPI-TerraBrasilis"
 LABEL br.inpe.dpi.terrabrasilis="NGINX Master"
-LABEL version="v0.3"
-LABEL main.author="Jether Rodrigues"
-LABEL main.author.email="jetherrodrigues@gmail.com"
+LABEL version="v1.0"
 LABEL author="Andre Carvalho"
 LABEL author.email="andre.carvalho@inpe.br"
 
