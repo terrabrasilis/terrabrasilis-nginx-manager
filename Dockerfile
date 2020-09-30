@@ -1,14 +1,16 @@
 # To build image for this dockerfile use this command:
-#   docker build -t terrabrasilis/nginx-manager:v1.0 -f Dockerfile .
+#   docker build -t terrabrasilis/nginx-manager:vx.y.z -f Dockerfile .
 #
 # To run without compose and without shell terminal use this command:
-#   docker run -d --rm --name terrabrasilis_nginx -v /tmp/nginx:/var/log/nginx terrabrasilis/nginx-manager:v1.0
+#   docker run -d --rm --name terrabrasilis_nginx -v /tmp/nginx:/var/log/nginx terrabrasilis/nginx-manager:vx.y.z
 #
 FROM nginx:latest
 
+ARG VERSION="1.0"
+
 LABEL "br.inpe.dpi"="INPE/DPI-TerraBrasilis"
 LABEL br.inpe.dpi.terrabrasilis="NGINX Master"
-LABEL version="v1.0"
+LABEL version=${VERSION}
 LABEL author="Andre Carvalho"
 LABEL author.email="andre.carvalho@inpe.br"
 
@@ -18,6 +20,7 @@ RUN rm -f /etc/localtime && ln -s /usr/share/zoneinfo/America/Sao_Paulo /etc/loc
 
 COPY config/nginx.conf /etc/nginx/nginx.conf
 COPY config/403.html /usr/share/nginx/html/403.html
+COPY config/404.html /usr/share/nginx/html/404.html
 
 # Copy task.cron file to the cron.d directory
 COPY config/task.cron /etc/cron.d/task.cron
